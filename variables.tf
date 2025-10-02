@@ -1,13 +1,13 @@
 variable "root_management_group_name" {
   description = "Name of the root management group"
   type        = string
-  default     = "Root"
+  default     = "TI"
 }
 
 variable "location" {
   description = "Azure region for resources"
   type        = string
-  default     = "eastus"
+  default     = "southcentralus"
 }
 
 variable "hub_vnet_name" {
