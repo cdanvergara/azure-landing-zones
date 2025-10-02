@@ -1,5 +1,5 @@
 # Management Group Hierarchy
-# Root
+# Root MG
 #   └── TI
 #       ├── Infra
 #       ├── Management
@@ -10,17 +10,16 @@
 # Get the tenant root group
 data "azurerm_client_config" "current" {}
 
-# Root Management Group (using tenant root as parent)
-resource "azurerm_management_group" "root" {
-  name         = var.root_management_group_name
-  display_name = var.root_management_group_name
+# Get the tenant root management group
+data "azurerm_management_group" "tenant_root" {
+  name = data.azurerm_client_config.current.tenant_id
 }
 
-# TI Management Group
+# TI Management Group (using tenant root as parent)
 resource "azurerm_management_group" "ti" {
-  name                       = "TI"
-  display_name               = "TI"
-  parent_management_group_id = azurerm_management_group.root.id
+  name                       = var.root_management_group_name
+  display_name               = var.root_management_group_name
+  parent_management_group_id = data.azurerm_management_group.tenant_root.id
 }
 
 # Infra Management Group
