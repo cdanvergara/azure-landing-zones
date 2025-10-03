@@ -8,7 +8,7 @@ This Terraform template creates a complete Azure Landing Zone infrastructure wit
 Creates a hierarchical management group structure:
 
 ```
-Root
+Root Tenant Group
 └── TI
     ├── Infra
     ├── Management
