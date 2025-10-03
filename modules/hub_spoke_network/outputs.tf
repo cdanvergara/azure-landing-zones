@@ -47,3 +47,13 @@ output "peering_spoke_to_hub_id" {
   description = "ID of the peering from spoke to hub"
   value       = azurerm_virtual_network_peering.spoke_to_hub.id
 }
+
+output "local_network_gateway_id" {
+  description = "ID of the local network gateway"
+  value       = azurerm_local_network_gateway.onprem.id
+}
+
+output "vpn_connection_id" {
+  description = "ID of the VPN connection"
+  value       = azurerm_virtual_network_gateway_connection.hub_to_onprem.id
+}

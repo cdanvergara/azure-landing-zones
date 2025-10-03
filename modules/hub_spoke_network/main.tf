@@ -83,3 +83,30 @@ resource "azurerm_virtual_network_peering" "spoke_to_hub" {
 
   depends_on = [azurerm_virtual_network_gateway.hub]
 }
+
+# Local Network Gateway (represents on-premises network)
+resource "azurerm_local_network_gateway" "onprem" {
+  name                = var.local_network_gateway_name
+  location            = azurerm_resource_group.network.location
+  resource_group_name = azurerm_resource_group.network.name
+  gateway_address     = var.local_network_gateway_address
+  address_space       = var.local_network_address_space
+}
+
+# VPN Connection between Virtual Network Gateway and Local Network Gateway
+resource "azurerm_virtual_network_gateway_connection" "hub_to_onprem" {
+  name                = var.vpn_connection_name
+  location            = azurerm_resource_group.network.location
+  resource_group_name = azurerm_resource_group.network.name
+
+  type                       = "IPsec"
+  virtual_network_gateway_id = azurerm_virtual_network_gateway.hub.id
+  local_network_gateway_id   = azurerm_local_network_gateway.onprem.id
+
+  shared_key = var.vpn_shared_key
+
+  depends_on = [
+    azurerm_virtual_network_gateway.hub,
+    azurerm_local_network_gateway.onprem
+  ]
+}

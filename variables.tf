@@ -51,3 +51,31 @@ variable "vpn_gateway_sku" {
   type        = string
   default     = "VpnGw1"
 }
+
+variable "local_network_gateway_name" {
+  description = "Name of the local network gateway"
+  type        = string
+  default     = "lng-onprem"
+}
+
+variable "local_network_gateway_address" {
+  description = "Public IP address of the on-premises VPN device"
+  type        = string
+}
+
+variable "local_network_address_space" {
+  description = "Address space of the on-premises network"
+  type        = list(string)
+}
+
+variable "vpn_connection_name" {
+  description = "Name of the VPN connection"
+  type        = string
+  default     = "conn-hub-to-onprem"
+}
+
+variable "vpn_shared_key" {
+  description = "Shared key for the VPN connection"
+  type        = string
+  sensitive   = true
+}

@@ -27,3 +27,18 @@ output "peering_spoke_to_hub_id" {
   description = "ID of the peering from spoke to hub"
   value       = module.hub_spoke_network.peering_spoke_to_hub_id
 }
+
+output "vpn_gateway_public_ip" {
+  description = "Public IP of the VPN Gateway"
+  value       = module.hub_spoke_network.vpn_gateway_public_ip
+}
+
+output "local_network_gateway_id" {
+  description = "ID of the local network gateway"
+  value       = module.hub_spoke_network.local_network_gateway_id
+}
+
+output "vpn_connection_id" {
+  description = "ID of the VPN connection"
+  value       = module.hub_spoke_network.vpn_connection_id
+}
