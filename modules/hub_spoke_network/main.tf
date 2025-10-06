@@ -105,8 +105,11 @@ resource "azurerm_virtual_network_gateway_connection" "hub_to_onprem" {
 
   shared_key = var.vpn_shared_key
 
+  # Explicit dependencies to ensure proper creation order
   depends_on = [
     azurerm_virtual_network_gateway.hub,
-    azurerm_local_network_gateway.onprem
+    azurerm_local_network_gateway.onprem,
+    azurerm_public_ip.vpn_gateway,
+    azurerm_subnet.gateway
   ]
 }
