@@ -58,3 +58,37 @@ output "local_network_gateway_id" {
 #   description = "ID of the VPN connection"
 #   value       = azurerm_virtual_network_gateway_connection.hub_to_onprem.id
 # }
+
+output "bastion_subnet_id" {
+  description = "ID of the Azure Bastion subnet"
+  value       = azurerm_subnet.bastion.id
+}
+
+output "firewall_subnet_id" {
+  description = "ID of the Azure Firewall subnet"
+  value       = azurerm_subnet.firewall.id
+}
+
+output "dns_private_resolver_id" {
+  description = "ID of the DNS Private Resolver"
+  value       = azurerm_private_dns_resolver.hub.id
+}
+
+output "dns_private_resolver_inbound_endpoint_ip" {
+  description = "IP address of the DNS Private Resolver inbound endpoint"
+  value       = azurerm_private_dns_resolver_inbound_endpoint.hub.ip_configurations[0].private_ip_address
+}
+
+output "private_dns_zones" {
+  description = "Map of private DNS zone names to their IDs"
+  value = {
+    ai_foundry         = azurerm_private_dns_zone.ai_foundry.id
+    openai             = azurerm_private_dns_zone.openai.id
+    cognitive_services = azurerm_private_dns_zone.cognitive_services.id
+    search             = azurerm_private_dns_zone.search.id
+    blob               = azurerm_private_dns_zone.blob.id
+    cosmosdb           = azurerm_private_dns_zone.cosmosdb.id
+    keyvault           = azurerm_private_dns_zone.keyvault.id
+    webapp             = azurerm_private_dns_zone.webapp.id
+  }
+}

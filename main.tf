@@ -23,4 +23,8 @@ module "hub_spoke_network" {
   # Temporarily commented out to resolve deployment issues
   # vpn_connection_name           = var.vpn_connection_name
   # vpn_shared_key                = var.vpn_shared_key
+  bastion_subnet_address_prefix         = var.bastion_subnet_address_prefix
+  firewall_subnet_address_prefix        = var.firewall_subnet_address_prefix
+  dns_resolver_inbound_subnet_prefix    = var.dns_resolver_inbound_subnet_prefix
+  dns_resolver_outbound_subnet_prefix   = var.dns_resolver_outbound_subnet_prefix
 }

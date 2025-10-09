@@ -54,6 +54,30 @@ variable "local_network_address_space" {
   type        = list(string)
 }
 
+variable "bastion_subnet_address_prefix" {
+  description = "Address prefix for Azure Bastion Subnet"
+  type        = string
+  default     = "10.0.2.0/24"
+}
+
+variable "firewall_subnet_address_prefix" {
+  description = "Address prefix for Azure Firewall Subnet"
+  type        = string
+  default     = "10.0.3.0/24"
+}
+
+variable "dns_resolver_inbound_subnet_prefix" {
+  description = "Address prefix for DNS Private Resolver inbound subnet"
+  type        = string
+  default     = "10.0.4.0/28"
+}
+
+variable "dns_resolver_outbound_subnet_prefix" {
+  description = "Address prefix for DNS Private Resolver outbound subnet"
+  type        = string
+  default     = "10.0.5.0/28"
+}
+
 # Temporarily commented out to resolve deployment issues
 # variable "vpn_connection_name" {
 #   description = "Name of the VPN connection"
