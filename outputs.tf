@@ -38,7 +38,8 @@ output "local_network_gateway_id" {
   value       = module.hub_spoke_network.local_network_gateway_id
 }
 
-output "vpn_connection_id" {
-  description = "ID of the VPN connection"
-  value       = module.hub_spoke_network.vpn_connection_id
-}
+# Temporarily commented out to resolve deployment issues
+# output "vpn_connection_id" {
+#   description = "ID of the VPN connection"
+#   value       = module.hub_spoke_network.vpn_connection_id
+# }

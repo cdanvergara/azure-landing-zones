@@ -53,7 +53,8 @@ output "local_network_gateway_id" {
   value       = azurerm_local_network_gateway.onprem.id
 }
 
-output "vpn_connection_id" {
-  description = "ID of the VPN connection"
-  value       = azurerm_virtual_network_gateway_connection.hub_to_onprem.id
-}
+# Temporarily commented out to resolve deployment issues
+# output "vpn_connection_id" {
+#   description = "ID of the VPN connection"
+#   value       = azurerm_virtual_network_gateway_connection.hub_to_onprem.id
+# }

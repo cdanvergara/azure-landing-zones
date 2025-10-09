@@ -94,22 +94,23 @@ resource "azurerm_local_network_gateway" "onprem" {
 }
 
 # VPN Connection between Virtual Network Gateway and Local Network Gateway
-resource "azurerm_virtual_network_gateway_connection" "hub_to_onprem" {
-  name                = var.vpn_connection_name
-  location            = azurerm_resource_group.network.location
-  resource_group_name = azurerm_resource_group.network.name
-
-  type                       = "IPsec"
-  virtual_network_gateway_id = azurerm_virtual_network_gateway.hub.id
-  local_network_gateway_id   = azurerm_local_network_gateway.onprem.id
-
-  shared_key = var.vpn_shared_key
-
-  # Explicit dependencies to ensure proper creation order
-  depends_on = [
-    azurerm_virtual_network_gateway.hub,
-    azurerm_local_network_gateway.onprem,
-    azurerm_public_ip.vpn_gateway,
-    azurerm_subnet.gateway
-  ]
-}
+# Temporarily commented out to resolve deployment issues
+# resource "azurerm_virtual_network_gateway_connection" "hub_to_onprem" {
+#   name                = var.vpn_connection_name
+#   location            = azurerm_resource_group.network.location
+#   resource_group_name = azurerm_resource_group.network.name
+#
+#   type                       = "IPsec"
+#   virtual_network_gateway_id = azurerm_virtual_network_gateway.hub.id
+#   local_network_gateway_id   = azurerm_local_network_gateway.onprem.id
+#
+#   shared_key = var.vpn_shared_key
+#
+#   # Explicit dependencies to ensure proper creation order
+#   depends_on = [
+#     azurerm_virtual_network_gateway.hub,
+#     azurerm_local_network_gateway.onprem,
+#     azurerm_public_ip.vpn_gateway,
+#     azurerm_subnet.gateway
+#   ]
+# }

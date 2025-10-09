@@ -20,6 +20,7 @@ module "hub_spoke_network" {
   local_network_gateway_name    = var.local_network_gateway_name
   local_network_gateway_address = var.local_network_gateway_address
   local_network_address_space   = var.local_network_address_space
-  vpn_connection_name           = var.vpn_connection_name
-  vpn_shared_key                = var.vpn_shared_key
+  # Temporarily commented out to resolve deployment issues
+  # vpn_connection_name           = var.vpn_connection_name
+  # vpn_shared_key                = var.vpn_shared_key
 }

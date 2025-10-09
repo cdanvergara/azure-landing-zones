@@ -54,14 +54,15 @@ variable "local_network_address_space" {
   type        = list(string)
 }
 
-variable "vpn_connection_name" {
-  description = "Name of the VPN connection"
-  type        = string
-  default     = "conn-hub-to-onprem"
-}
+# Temporarily commented out to resolve deployment issues
+# variable "vpn_connection_name" {
+#   description = "Name of the VPN connection"
+#   type        = string
+#   default     = "conn-hub-to-onprem"
+# }
 
-variable "vpn_shared_key" {
-  description = "Shared key for the VPN connection"
-  type        = string
-  sensitive   = true
-}
+# variable "vpn_shared_key" {
+#   description = "Shared key for the VPN connection"
+#   type        = string
+#   sensitive   = true
+# }
